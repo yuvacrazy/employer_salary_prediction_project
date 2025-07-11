@@ -7,6 +7,7 @@ model = joblib.load("salary_model.pkl")
 encoders = joblib.load("encoders.pkl")
 
 st.title("💼 Employer Salary Prediction App")
+st.print("project by Yuvaraja")
 
 # User Inputs
 age = st.number_input("Age", min_value=17, max_value=90)
