@@ -4,10 +4,9 @@ import numpy as np
 
 # Load model and encoders
 model = joblib.load("salary_model.pkl")
-encoders = joblib.load("label_encoders.pkl")
+encoders = joblib.load("encoders.pkl")
 
 st.title("💼 Employer Salary Prediction App")
-st.title("project by Yuvaraja")
 
 # User Inputs
 age = st.number_input("Age", min_value=17, max_value=90)
@@ -27,6 +26,14 @@ X_input = np.array([[
     encoders['marital-status'].transform([marital_status])[0],
     0, 0  # placeholders for capital-gain and capital-loss
 ]])
+# Prediction display
+st.subheader("📊 Predicted Salary Class:")
+st.success(">50K" if pred == 1 else "≤50K")
+
+# Footer
+st.markdown("---")
+st.markdown("👨‍💻 Project by Yuvaraja", unsafe_allow_html=True)
+
 
 # Predict
 pred = model.predict(X_input)[0]
